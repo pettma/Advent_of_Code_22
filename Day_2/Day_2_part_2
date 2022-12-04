@@ -1,0 +1,52 @@
+# Rock      - A     - 1 point
+# Paper     - B     - 2 points
+# Scissors  - C     - 3 points
+
+# Win   - 6 points
+# Draw  - 3 points
+# Lose  - 0 points
+
+# X     -   Lose
+# Y     -   Draw
+# Z     -   Win
+
+# iterate through file
+# check line with boolean logic
+# sum points
+
+def check_points(a, b):
+    points = 0
+
+    if b == 'X':            # You need to lose
+        if a == 'A':        # Opponent picks rock
+            points = 3 + 0  # You need to pick scissors
+        elif a == 'B':     # Opponent picks paper
+            points = 1 + 0  # You need to pick rock
+        elif a == 'C':     # Opponent picks scissors
+            points = 2 + 0  # You need to pick paper
+    elif b == 'Y':          # Round ends in draw
+        if a == 'A':        # Opponent picks rock
+            points = 1 + 3  # You need to pick rock
+        elif a == 'B':     # Opponent picks paper
+            points = 2 + 3  # You need to pick paper
+        elif a == 'C':     # Opponent picks scissors
+            points = 3 + 3  # You need to pick scissors
+    elif b == 'Z':          # You need to win
+        if a == 'A':        # Opponent picks rock
+            points = 2 + 6  # You need to pick paper
+        elif a == 'B':     # Opponent picks paper
+            points = 3 + 6  # You need to pick scissors
+        elif a == 'C':     # Opponent picks scissors
+            points = 1 + 6  # You need to pick rock
+    return points
+
+total_points = 0
+
+with open('/Users/pettermartinussen/CS/Advent_of_Code_22/Day_2/input.txt','r') as f:
+    for line in f:
+        tekst = line
+        a = tekst[0]
+        b = tekst[2]
+        total_points = total_points + check_points(a,b)
+
+print('Total score: ' + str(total_points))
