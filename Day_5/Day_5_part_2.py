@@ -35,9 +35,7 @@ def fra_stack_til_liste(stack):
                 temp.append(liste[i][j])
         temp.reverse()
         ny_liste.append(temp)
-
-
-    
+        
     return ny_liste
 
 def flytt_instruksjon(liste):
